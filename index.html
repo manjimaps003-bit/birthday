@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>A Little Birthday Surprise 🌸</title>
+<title>Just a Little Surprise 🌸</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -12,40 +12,54 @@ body {
   background: linear-gradient(to bottom, #ffeef3, #fff7fb);
   color: #5a3e4c;
   text-align: center;
-  overflow-x: hidden;
 }
 
 section {
-  padding: 40px 20px;
   display: none;
+  padding: 40px 20px;
 }
 
-h1, h2 {
-  font-weight: 500;
+section.active {
+  display: block;
 }
 
 button {
   background: #f6b7c1;
   border: none;
-  padding: 12px 22px;
+  padding: 12px 24px;
   border-radius: 25px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 20px;
-  color: #5a3e4c;
+  margin: 10px;
 }
 
-button:hover {
-  background: #f2a9b5;
+.teddy {
+  width: 150px;
+  position: absolute;
+  bottom: 80px;
 }
 
-.question {
-  margin: 25px 0;
+.slide-in {
+  animation: slideIn 2s forwards;
 }
 
-.options label {
-  margin: 0 10px;
-  cursor: pointer;
+@keyframes slideIn {
+  from { left: -200px; }
+  to { left: 50%; transform: translateX(-50%); }
+}
+
+.fight {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
 }
 
 .fade {
@@ -57,94 +71,52 @@ button:hover {
   to { opacity: 1; }
 }
 
-/* Images */
 .gallery img {
-  width: 85%;
+  width: 80%;
   max-width: 300px;
   border-radius: 20px;
   margin: 15px 0;
-  opacity: 0;
-  animation: fadeIn 2s forwards;
-}
-
-/* Confetti */
-.confetti {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: pink;
-  top: -10px;
-  animation: fall 4s linear infinite;
-  opacity: 0.6;
-}
-
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Background Music -->
-<audio id="bgMusic" autoplay loop>
-  <source src="everlasting.mp3" type="audio/mpeg">
+<audio id="bgMusic" loop>
+  <source src="everlasting.mpeg" type="audio/mpeg">
 </audio>
 
-<!-- 🎉 Confetti -->
-<script>
-for (let i = 0; i < 40; i++) {
-  let c = document.createElement("div");
-  c.className = "confetti";
-  c.style.left = Math.random() * 100 + "vw";
-  c.style.animationDelay = Math.random() * 4 + "s";
-  c.style.background = ["#f6b7c1","#f9d5e5","#ffdce5"][Math.floor(Math.random()*3)];
-  document.body.appendChild(c);
-}
-</script>
-
-<!-- 📝 Questionnaire -->
-<section id="quiz" style="display:block">
-  <h2>🌸 Before We Begin… 🌸</h2>
-
-  <div class="question">
-    <p>Are you happy to go through this little surprise session? 💕</p>
-    <div class="options">
-      <label><input type="radio" name="q1"> Yes</label>
-      <label><input type="radio" name="q1"> No</label>
-    </div>
-  </div>
-
-  <div class="question">
-    <p>Am I someone you truly love and care about? 🥹💖</p>
-    <div class="options">
-      <label><input type="radio" name="q2"> Yes</label>
-      <label><input type="radio" name="q2"> No</label>
-    </div>
-  </div>
-
-  <div class="question">
-    <p>Do you feel this birthday will be happier than the previous years? 🎂✨</p>
-    <div class="options">
-      <label><input type="radio" name="q3"> Yes</label>
-      <label><input type="radio" name="q3"> No</label>
-    </div>
-  </div>
-
-  <div class="question">
-    <p>Do you think this will be a good surprise for you? 🎁🌺</p>
-    <div class="options">
-      <label><input type="radio" name="q4"> Yes</label>
-      <label><input type="radio" name="q4"> No</label>
-    </div>
-  </div>
-
-  <button onclick="showSurprise()">Continue 💗</button>
+<!-- QUESTIONS -->
+<section id="q1" class="active">
+  <h2>Are you happy to go through this little surprise session? 💕</h2>
+  <button onclick="yes(1)">Yes</button>
+  <button onclick="no()">No</button>
 </section>
 
-<!-- 💌 Message Section -->
+<section id="q2">
+  <h2>Am I someone you truly love and care about? 🥹💖</h2>
+  <button onclick="yes(2)">Yes</button>
+  <button onclick="no()">No</button>
+</section>
+
+<section id="q3">
+  <h2>Do you feel this birthday will be happier than the previous years? 🎂✨</h2>
+  <button onclick="yes(3)">Yes</button>
+  <button onclick="no()">No</button>
+</section>
+
+<section id="q4">
+  <h2>Do you think this will be a good surprise for you? 🎁🌺</h2>
+  <button onclick="yes(4)">Yes</button>
+  <button onclick="no()">No</button>
+</section>
+
+<!-- TEDDY ANIMATION -->
+<div id="teddyContainer"></div>
+
+<!-- MESSAGE -->
 <section id="message" class="fade">
-  <h1>💖 Happy Birthday My Best Friend 💖</h1>
+  <h1>💖 Happy Birthday Alliiii 💖</h1>
   <p>
     Your answers already made me smile.  
     This little page is just a reminder of how special you are,  
@@ -156,28 +128,53 @@ for (let i = 0; i < 40; i++) {
     Stay happy always.<br><br>
     Whatever happens, I’ll be there for you whenever you need me. 🌷
   </p>
-  <button onclick="showGallery()">See Something Sweet 🌸</button>
+  <button onclick="playMusic(); showGallery()">Continue 🌸</button>
 </section>
 
-<!-- 🖼️ Photo Gallery -->
-<section id="gallery" class="gallery fade">
-  <h2>🌺 Moments That Feel Like Home 🌺</h2>
-  <img src="photo1.jpeg" style="animation-delay:0.5s">
-  <img src="photo2.jpeg" style="animation-delay:1.5s">
-  <img src="photo3.jpeg" style="animation-delay:2.5s">
-  <img src="photo4.jpeg" style="animation-delay:3.5s">
-  <p>May this year wrap you in peace, smiles, and soft happiness 💕</p>
+<!-- GALLERY -->
+<section id="gallery" class="fade">
+  <h2>🌺 Moments 🌺</h2>
+  <div class="gallery">
+    <img src="photo1.jpeg">
+    <img src="photo2.jpeg">
+    <img src="photo3.jpeg">
+    <img src="photo4.jpeg"
+  </div>
 </section>
 
 <script>
-function showSurprise() {
-  document.getElementById("quiz").style.display = "none";
-  document.getElementById("message").style.display = "block";
+function yes(n) {
+  document.getElementById("teddyContainer").innerHTML =
+    '<img src="teddy-gift.png" class="teddy slide-in">';
+  setTimeout(() => {
+    document.getElementById("q" + n).classList.remove("active");
+    if (n < 4) {
+      document.getElementById("q" + (n + 1)).classList.add("active");
+    } else {
+      document.getElementById("message").classList.add("active");
+    }
+    document.getElementById("teddyContainer").innerHTML = "";
+  }, 2000);
+}
+
+function no() {
+  document.getElementById("teddyContainer").innerHTML = `
+    <div class="fight">
+      <img src="teddy-fight-left.png" width="120">
+      <img src="teddy-fight-right.png" width="120">
+    </div>
+    <p style="margin-top:20px;font-weight:500;">
+      hey dog, go and click the yes 😄
+    </p>`;
 }
 
 function showGallery() {
-  document.getElementById("message").style.display = "none";
-  document.getElementById("gallery").style.display = "block";
+  document.getElementById("message").classList.remove("active");
+  document.getElementById("gallery").classList.add("active");
+}
+
+function playMusic() {
+  document.getElementById("bgMusic").play();
 }
 </script>
 
