@@ -1,68 +1,126 @@
 body {
-  background: #fff3f7;
-  font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
   text-align: center;
+  color: #5a3a4a;
+
+  /* 🌸 Pastel hibiscus gradient background */
+  background: linear-gradient(
+    135deg,
+    #ffe6f0,
+    #fff1f5,
+    #ffeef3,
+    #fff7fb
+  );
+
+  overflow-x: hidden;
 }
 
+/* 🌺 Soft floral overlay effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.12;
+  pointer-events: none;
+
+  background-image: url("https://www.transparenttextures.com/patterns/flowers.png");
+  background-size: 300px;
+}
+
+/* 🌸 Main container glass effect */
 #container {
   margin-top: 60px;
-  padding: 20px;
+  padding: 25px;
+
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+
+  border-radius: 25px;
+  width: 85%;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+
+  box-shadow: 0 8px 25px rgba(255, 182, 193, 0.25);
 }
 
+/* 🌷 Question text */
 h2 {
-  font-weight: normal;
+  font-weight: 500;
+  color: #7a3b5c;
 }
 
+/* 💗 Buttons */
 button {
   padding: 10px 25px;
   margin: 10px;
   font-size: 16px;
-  border-radius: 20px;
+
+  border-radius: 25px;
   border: none;
   cursor: pointer;
-  background: #ffe1ec;
+
+  background: linear-gradient(135deg, #ffb6c1, #ffd6e0);
+  color: #5a2d3f;
+
+  box-shadow: 0 4px 12px rgba(255, 150, 180, 0.3);
+  transition: 0.3s ease;
 }
 
 button:hover {
-  background: #ffd1e4;
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #ffc2d1, #ffe0ea);
 }
 
+/* 🧸 Images */
 img {
   width: 220px;
   margin-top: 20px;
-  animation: fade 1s ease-in-out;
+  border-radius: 15px;
+
+  animation: fade 1.2s ease-in-out;
 }
 
+/* 🔥 hidden class */
 .hidden {
   display: none;
 }
 
-#noText {
-  color: #d1004b;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
+/* 💌 Final message */
 #finalMessage {
   display: none;
   margin-top: 30px;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.8;
+  color: #6a3b52;
 }
 
-/* Photos at the end */
+/* 📸 Photo section */
 #photoSection {
   display: none;
   margin-top: 40px;
 }
 
 #photoSection img {
-  width: 200px;
+  width: 180px;
   margin: 10px;
-  border-radius: 12px;
+  border-radius: 15px;
+
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.25);
 }
 
+/* 🌸 fade animation */
 @keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
