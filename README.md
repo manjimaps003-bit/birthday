@@ -161,7 +161,7 @@ function no() {
   document.getElementById("teddyContainer").innerHTML = `
     <div class="fight">
       <img src="left teddy.png" width="120">
-      <img src="right teddy.jng" width="120">
+      <img src="right teddy.jpg" width="120">
     </div>
     <p style="margin-top:20px;font-weight:500;">
       hey dog, go and click the yes 😄
