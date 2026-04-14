@@ -144,11 +144,17 @@ for (let i = 0; i < 40; i++) {
 
 <!-- 💌 Message Section -->
 <section id="message" class="fade">
-  <h1>💖 Happy Birthday 💖</h1>
+  <h1>💖 Happy Birthday My Best Friend 💖</h1>
   <p>
     Your answers already made me smile.  
     This little page is just a reminder of how special you are,  
-    how loved you are, and how grateful I am to have you. 🌷
+    how loved you are, and how grateful I am to have you.
+    <strong>Many more happy returns of the day, Alliiii 🤍</strong><br><br>
+    I don’t really know how to express all this love on your birthday.<br>
+    I know it’s your special day, but for me, I’ve been excited about this day for a long time.<br><br>
+    I just want to fill this birthday with happiness and smiles for you.<br>
+    Stay happy always.<br><br>
+    Whatever happens, I’ll be there for you whenever you need me. 🌷
   </p>
   <button onclick="showGallery()">See Something Sweet 🌸</button>
 </section>
@@ -159,6 +165,7 @@ for (let i = 0; i < 40; i++) {
   <img src="photo1.jpg" style="animation-delay:0.5s">
   <img src="photo2.jpg" style="animation-delay:1.5s">
   <img src="photo3.jpg" style="animation-delay:2.5s">
+  <img src="photo4.jpg" style="animation-delay:3.5s">
   <p>May this year wrap you in peace, smiles, and soft happiness 💕</p>
 </section>
 
