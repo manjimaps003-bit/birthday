@@ -2,178 +2,155 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Just a Little Surprise 🌸</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
 
 <style>
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #ffeef3, #fff7fb);
-  color: #5a3e4c;
+  background: #fff3f7;
+  font-family: Arial, sans-serif;
   text-align: center;
 }
 
-section {
-  display: none;
-  padding: 40px 20px;
+#container {
+  margin-top: 60px;
+  padding: 20px;
 }
 
-section.active {
-  display: block;
+h2 {
+  font-weight: normal;
 }
 
 button {
-  background: #f6b7c1;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
+  padding: 10px 25px;
   margin: 10px;
-}
-
-.teddy {
-  width: 150px;
-  position: absolute;
-  bottom: 80px;
-}
-
-.slide-in {
-  animation: slideIn 2s forwards;
-}
-
-@keyframes slideIn {
-  from { left: -200px; }
-  to { left: 50%; transform: translateX(-50%); }
-}
-
-.fight {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-  animation: shake 0.5s infinite;
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(5px); }
-  100% { transform: translateX(0); }
-}
-
-.fade {
-  opacity: 0;
-  animation: fadeIn 2s forwards;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-.gallery img {
-  width: 80%;
-  max-width: 300px;
+  font-size: 16px;
   border-radius: 20px;
-  margin: 15px 0;
+  border: none;
+  cursor: pointer;
+  background: #ffe1ec;
+}
+
+button:hover {
+  background: #ffd1e4;
+}
+
+img {
+  width: 220px;
+  display: none;
+  margin-top: 20px;
+  animation: fade 1s ease-in-out;
+}
+
+#noText {
+  color: #d1004b;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#finalMessage {
+  display: none;
+  margin-top: 30px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 </style>
 </head>
 
 <body>
 
-<audio id="bgMusic" loop>
-  <source src="everlasting.mpeg" type="audio/mpeg">
-</audio>
+<div id="container">
 
-<!-- QUESTIONS -->
-<section id="q1" class="active">
-  <h2>Are you happy to go through this little surprise session? 💕</h2>
-  <button onclick="yes(1)">Yes</button>
-  <button onclick="no()">No</button>
-</section>
+  <h2 id="question">Are you happy to go through this session?</h2>
 
-<section id="q2">
-  <h2>Am I someone you truly love and care about? 🥹💖</h2>
-  <button onclick="yes(2)">Yes</button>
-  <button onclick="no()">No</button>
-</section>
+  <div id="buttons">
+    <button onclick="answerYes()">Yes</button>
+    <button onclick="answerNo()">No</button>
+  </div>
 
-<section id="q3">
-  <h2>Do you feel this birthday will be happier than the previous years? 🎂✨</h2>
-  <button onclick="yes(3)">Yes</button>
-  <button onclick="no()">No</button>
-</section>
+  <!-- Gift IMAGE (not gif) -->
+  <img id="giftImg" src="teddy-gift.png" alt="Gift">
 
-<section id="q4">
-  <h2>Do you think this will be a good surprise for you? 🎁🌺</h2>
-  <button onclick="yes(4)">Yes</button>
-  <button onclick="no()">No</button>
-</section>
+  <!-- Fighting GIF -->
+  <img id="fightGif" src="teddy-fight.gif" alt="Teddy fight">
 
-<!-- TEDDY ANIMATION -->
-<div id="teddyContainer"></div>
+  <p id="noText"></p>
 
-<!-- MESSAGE -->
-<section id="message" class="fade">
-  <h1>💖 Happy Birthday Alliiii 💖</h1>
-  <p>
+  <p id="finalMessage">
     Your answers already made me smile.  
     This little page is just a reminder of how special you are,  
     how loved you are, and how grateful I am to have you.
-    <strong>Many more happy returns of the day, Alliiii 🤍</strong><br><br>
-    I don’t really know how to express all this love on your birthday.<br>
-    I know it’s your special day, but for me, I’ve been excited about this day for a long time.<br><br>
-    I just want to fill this birthday with happiness and smiles for you.<br>
-    Stay happy always.<br><br>
-    Whatever happens, I’ll be there for you whenever you need me. 🌷
+    <strong> Many more happy returns of the day, Alliii ❤️<br><br>
+    I don’t know how to simply express my love on this birthday.  
+    I know it’s your day, but for me, I’ve been excited about this day for a long time.  
+    I want to fill this birthday with happiness.  
+    Stay happy. Whatever happens, I’ll be there for you whenever you need me.
   </p>
-  <button onclick="playMusic(); showGallery()">Continue 🌸</button>
-</section>
 
-<!-- GALLERY -->
-<section id="gallery" class="fade">
-  <h2>🌺 Moments 🌺</h2>
-  <div class="gallery">
-    <img src="photo1.jpeg">
-    <img src="photo2.jpeg">
-    <img src="photo3.jpeg">
-    <img src="photo4.jpeg"
-  </div>
-</section>
+</div>
+
+<audio id="bgMusic">
+  <source src="everlasting.mpeg" type="audio/mpeg">
+</audio>
 
 <script>
-function yes(n) {
-  document.getElementById("teddyContainer").innerHTML =
-    '<img src="teddy-gift.png" class="teddy slide-in">';
+let started = false;
+let index = 0;
+
+const questions = [
+  "Are you happy to go through this session?",
+  "Am I lovable?",
+  "Do you think this birthday will be happier than previous years?",
+  "Do you think this will be a good surprise for you?"
+];
+
+const question = document.getElementById("question");
+const giftImg = document.getElementById("giftImg");
+const fightGif = document.getElementById("fightGif");
+const noText = document.getElementById("noText");
+const finalMessage = document.getElementById("finalMessage");
+const buttons = document.getElementById("buttons");
+const music = document.getElementById("bgMusic");
+
+function startMusic() {
+  if (!started) {
+    music.play();
+    started = true;
+  }
+}
+
+function answerYes() {
+  startMusic();
+
+  fightGif.style.display = "none";
+  noText.innerText = "";
+
+  giftImg.style.display = "block";
+
   setTimeout(() => {
-    document.getElementById("q" + n).classList.remove("active");
-    if (n < 4) {
-      document.getElementById("q" + (n + 1)).classList.add("active");
+    giftImg.style.display = "none";
+    index++;
+
+    if (index < questions.length) {
+      question.innerText = questions[index];
     } else {
-      document.getElementById("message").classList.add("active");
+      question.style.display = "none";
+      buttons.style.display = "none";
+      finalMessage.style.display = "block";
     }
-    document.getElementById("teddyContainer").innerHTML = "";
-  }, 2000);
+  }, 1500);
 }
 
-function no() {
-  document.getElementById("teddyContainer").innerHTML = `
-    <div class="fight">
-      <img src="teddy-fight.gif" width="120">
-    </div>
-    <p style="margin-top:20px;font-weight:500;">
-      hey dog, go and click the yes 😄
-    </p>`;
-}
+function answerNo() {
+  startMusic();
 
-function showGallery() {
-  document.getElementById("message").classList.remove("active");
-  document.getElementById("gallery").classList.add("active");
-}
-
-function playMusic() {
-  document.getElementById("bgMusic").play();
+  giftImg.style.display = "none";
+  fightGif.style.display = "block";
+  noText.innerText = "hey dog, go and click the yes";
 }
 </script>
 
