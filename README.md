@@ -162,10 +162,10 @@ for (let i = 0; i < 40; i++) {
 <!-- 🖼️ Photo Gallery -->
 <section id="gallery" class="gallery fade">
   <h2>🌺 Moments That Feel Like Home 🌺</h2>
-  <img src="photo1.jpg" style="animation-delay:0.5s">
-  <img src="photo2.jpg" style="animation-delay:1.5s">
-  <img src="photo3.jpg" style="animation-delay:2.5s">
-  <img src="photo4.jpg" style="animation-delay:3.5s">
+  <img src="photo1.jpeg" style="animation-delay:0.5s">
+  <img src="photo2.jpeg" style="animation-delay:1.5s">
+  <img src="photo3.jpeg" style="animation-delay:2.5s">
+  <img src="photo4.jpeg" style="animation-delay:3.5s">
   <p>May this year wrap you in peace, smiles, and soft happiness 💕</p>
 </section>
 
