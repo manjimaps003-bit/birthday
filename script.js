@@ -17,6 +17,7 @@ const buttons = document.getElementById("buttons");
 const music = document.getElementById("bgMusic");
 const photoSection = document.getElementById("photoSection");
 
+/* 🎵 MUSIC START ONLY ON FIRST YES */
 function startMusic() {
   if (!started) {
     music.play();
@@ -25,7 +26,11 @@ function startMusic() {
 }
 
 function answerYes() {
-  startMusic();
+
+  // 🎯 ONLY START MUSIC IF FIRST QUESTION
+  if (index === 0) {
+    startMusic();
+  }
 
   fightGif.classList.add("hidden");
   noText.innerText = "";
@@ -48,7 +53,12 @@ function answerYes() {
 }
 
 function answerNo() {
-  startMusic();
+
+  // 🎯 MUSIC ALSO STARTS ONLY IF FIRST QUESTION
+  if (index === 0) {
+    startMusic();
+  }
+
   giftImg.classList.add("hidden");
   fightGif.classList.remove("hidden");
   noText.innerText = "hey dog, go and click the yes";
