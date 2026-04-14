@@ -46,47 +46,10 @@
 
 </div>
 
-<!-- Background Music -->
-<audio id="bgMusic">
-  <source src="everlasting.mp3" type="audio/mpeg">
-</audio>
-  function startMusic() {
-  if (!started) {
-    music.play();
-    started = true;
-  }
-}
+  <audio id="bgMusic">
+    <source src="everlasting.mp3" type="audio/mpeg">
+  </audio>
 
-function answerYes() {
-  startMusic();
-
-  fightGif.style.display = "none";
-  noText.innerText = "";
-
-  giftGif.style.display = "block";
-
-  setTimeout(() => {
-    giftGif.style.display = "none";
-    index++;
-
-    if (index < questions.length) {
-      question.innerText = questions[index];
-    } else {
-      question.style.display = "none";
-      buttons.style.display = "none";
-      finalMessage.style.display = "block";
-    }
-  }, 1500);
-}
-
-function answerNo() {
-  startMusic();
-
-  giftGif.style.display = "none";
-  fightGif.style.display = "block";
-  noText.innerText = "hey dog, go and click the yes";
-}
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
